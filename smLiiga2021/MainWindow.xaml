@@ -1,0 +1,194 @@
+﻿<Window x:Class="smLiiga2021.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:smLiiga2021"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="460" Width="800">
+
+    <Grid>
+        <TabControl Name="välilehti" VerticalAlignment="Top">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF24549B" Offset="0"/>
+                    <GradientStop Color="#FFCBDFF3" Offset="0.96"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+
+            <TabItem Header="Aloitus">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="280"/>
+                        <ColumnDefinition Width="260"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Calendar Grid.Column="2" Grid.Row="1" SelectionMode="SingleDate"
+                         VerticalAlignment="Center" Name="clrottelunpvm" SelectedDatesChanged="clrottelunpvm_SelectedDatesChanged"
+                         Width="200" Height="200" Margin="40,0"  
+                        >
+                        <Calendar.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0.161"/>
+                                <GradientStop Color="#FFC7B080" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Calendar.Background>
+                        <Calendar.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                                <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                                <GradientStop Color="#FF718597" Offset="0.375"/>
+                                <GradientStop Color="#FF063457" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Calendar.BorderBrush>
+                    </Calendar>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="Valitse ottelun päivämäärä:" VerticalAlignment="Bottom"
+                           Margin="31,0,31,10" HorizontalAlignment="Center" FontFamily="Verdana Pro Black" FontSize="13" >
+                    </Label>
+                    <Button Name="btnNextTab" Grid.Column="3" Grid.Row="1" Width="50" Height="25" 
+                            BorderThickness="2" Background="{x:Null}" HorizontalAlignment="Left" 
+                                    BorderBrush="#FF08224F" FontFamily="Verdana Pro Black" FontSize="12" 
+                            Click="btnNextTab_Click" Margin="0,88">Aloita</Button>
+
+                    <Image Height="200" Width="290" HorizontalAlignment="Left"
+                   Source="smliiga.png"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,130" Grid.RowSpan="2"
+                   
+                   
+                   />
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Laske maalit">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox Name="lstKotijoukkue" 
+                     Grid.Row="0" Grid.Column="0"
+                     Height="320" SelectionChanged="lstKotijoukkue_SelectionChanged" 
+                     FontFamily="Tw Cen MT" 
+                     FontSize="15" Background="{x:Null}"            
+                                 />
+                        <ListBox Name="lstKotipelaajat" 
+                     Grid.Row="0" Grid.Column="1"
+                     Height="320"
+                     FontFamily="Tw Cen MT" 
+                     FontSize="15" Background="{x:Null}" />
+                        <ListBox Name="lstVierasjoukkue" 
+                     Grid.Row="0" Grid.Column="5"
+                     Height="320" SelectionChanged="lstVierasjoukkue_SelectionChanged" 
+                     FontFamily="Tw Cen MT" 
+                     FontSize="15" Background="{x:Null}"             />
+                        <ListBox Name="lstVieraspelaajat" 
+                     Grid.Row="0" Grid.Column="4"
+                     Height="320" 
+                     FontFamily="Tw Cen MT" 
+                     FontSize="15" Background="{x:Null}"             />
+
+
+                        <StackPanel  Grid.Row="0" Grid.Column="2">
+                            <Label Name="lblKotijoukkue"
+                   Height="60" Width="150"
+                    FontSize="15" FontWeight="Bold" FontFamily="Segoe UI Black"   
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}"
+                   />
+                            <Label Name="lblKotiMaalit"
+                   Height="60" Width="150"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="16"
+                       FontWeight="Bold" Background="{x:Null}"  
+                   />
+
+                            <Button Name="btnKirjaaKotiMaali" 
+                    Height="100" Content="Kirjaa kotimaali" Click="btnKirjaaKotiMaali_Click" BorderThickness="5" Background="{x:Null}" 
+                                    BorderBrush="#FF08224F" FontFamily="Verdana Pro Black" FontSize="13"  
+                    >
+
+                            </Button>
+                            <ListBox Name="lstKotiMaalit" 
+                         Height="100"
+                         FontFamily="Tw Cen MT" 
+                     FontSize="14" Background="{x:Null}" 
+                                     />
+                        </StackPanel>
+                        <StackPanel  Grid.Row="0" Grid.Column="3">
+                            <Label Name="lblVierasjoukkue"
+                   Height="60" Width="150"
+                   FontSize="15" FontWeight="Bold"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}"
+                   />
+                            <Label Name="lblVierasMaalit"
+                   Height="60" Width="150"
+                  
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="16"
+                       FontWeight="Bold" Background="{x:Null}"/>
+
+                            <Button Name="btnKirjaaVierasMaali" 
+                    Height="100" Content="Kirjaa vierasmaali" Click="btnKirjaaVierasMaali_Click" BorderBrush="#FF08224F" BorderThickness="5" ClipToBounds="True" Background="{x:Null}" 
+                     FontFamily="Verdana Pro Black" FontSize="13" 
+                                    />
+                            <ListBox Name="lstVierasMaalit"
+                         Height="100"
+                         FontFamily="Tw Cen MT" 
+                     FontSize="14" Background="{x:Null}"             />
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Grid.Column="0"
+                                    
+                                    Orientation="Horizontal">
+                        <Label x:Name="lblPelintiedot"
+                                Width="350" Height="50"
+                                Margin="70,10,0,10"
+                                HorizontalContentAlignment="Center"
+                                FontFamily="Arial"
+                                FontSize="18"
+                                FontWeight="Bold" BorderBrush="#FFF7F6F4" BorderThickness="3">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFF3E6C2" Offset="1"/>
+                                    <GradientStop Color="#FFF0CB69"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                        <Label x:Name="lblTilanne" Background="{x:Null}"
+                                   
+                                 HorizontalContentAlignment="Center"
+                                 Width="70" Height="50"
+                                 Margin="120,0,0,0"
+                                 FontFamily="Arial"
+                                 FontSize="22"
+                                 FontWeight="Bold" BorderBrush="#FFFBFBFB" BorderThickness="3" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
+    </Grid>
+</Window>
